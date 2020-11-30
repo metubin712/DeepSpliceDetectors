@@ -5,7 +5,7 @@ mkdir -p "$directory"
 
 output="$directory/data.tar.gz"
 if ! [ -f $output ]; then
-  curl -sL -o $output "https://drive.google.com/uc?export=download&id=1PMch7jwhVF2Pwd_VAow_E7Rgv9PJy5cL"
+  curl -sL -o $output "https://drive.google.com/uc?export=download&id=1RY2n3sSciln3qIEVVFs-f5_lG-EXn9q1"
 fi
 
 tar -xf $output -C $directory
