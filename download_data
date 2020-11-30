@@ -1,0 +1,12 @@
+#!/bin/bash
+
+directory=~/.frontiers-molecular-biosciences-2020
+mkdir -p "$directory"
+
+output="$directory/data.tar.gz"
+if ! [ -f $output ]; then
+  curl -sL -o $output "https://drive.google.com/uc?export=download&id=1PMch7jwhVF2Pwd_VAow_E7Rgv9PJy5cL"
+fi
+
+tar -xf $output -C $directory
+
