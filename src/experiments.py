@@ -294,25 +294,21 @@ class BlstmLevel2Extended(BlstmLevel2):
     def __init__(self):
         super(BlstmLevel2Extended, self).__init__()
         self._network_name = 'blstm_level_2_extended'
-        self.is_extended = True
 
 
 class BlstmLevel3Extended(BlstmLevel3):
     def __init__(self):
         super(BlstmLevel3Extended, self).__init__()
         self._network_name = 'blstm_level_3_extended'
-        self.is_extended = True
 
 
 class BlstmLevel4Extended(BlstmLevel4):
     def __init__(self):
         super(BlstmLevel4Extended, self).__init__()
         self._network_name = 'blstm_level_4_extended'
-        self.is_extended = True
 
 
 class BlstmLevel5Extended(BlstmLevel5):
     def __init__(self):
         super(BlstmLevel5Extended, self).__init__()
         self._network_name = 'blstm_level_5_extended'
-        self.is_extended = True
