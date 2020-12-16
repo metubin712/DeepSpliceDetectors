@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directory=~/.frontiers-molecular-biosciences-2020
+directory=~/.DeepSpliceDetectors
 mkdir -p "$directory"
 
 output="$directory/data.tar.gz"

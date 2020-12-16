@@ -26,7 +26,7 @@ class TrainingSequence(Sequence):
 
 class DataGenerator:
     
-    _data_location = f'{HOME}/.frontiers-molecular-biosciences-2020'
+    _data_location = f'{HOME}/.DeepSpliceDetectors'
     
     # Fixed Properies
     _data_files = [
@@ -179,15 +179,18 @@ class DataGenerator:
         return TrainingSequence(x, y, batch_size)
 
 if __name__ == "__main__":
+    # Creating Data Generator
     data_generator = DataGenerator(seed=0, upsampling=2, validation_split=0.2)
-    print('Processing is done!')
+
+    # Validation Data
     val_X, val_y = data_generator.get_validation_data()
-    print(val_X.shape, val_y.shape)
-    print()
-    i = 0
-    gen = data_generator.get_training_generator(100)
-    print(gen)
-    print(len(gen))
-    x, y = gen[0]
-    print(x.shape)
-    print(y.shape)
+    print(f'Shape of Validation Data: {val_X.shape}')
+    print(f'Shape of Validation Labels: {val_y.shape}')
+
+    # Training Data
+    batch_size = 100
+    print(f'Generating Traning Data. Batch Size: {batch_size}')
+    gen = data_generator.get_training_generator(batch_size)
+    x, y = gen[0]  # Example Batch
+    print(f'Shape of Training Batch: {x.shape}')
+    print(f'Shape of Training Batch Labels: {y.shape}')
