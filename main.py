@@ -22,6 +22,7 @@ if __name__ == '__main__':
     ]
 
     for experiment in experiments:
+        print(f'Running {experiment.get_network_name()}.')
         with tf.device('/gpu:0' if execute_on_gpu else '/cpu:0'):
             model = experiment()
             model.fit(experiments=2, epochs=10)

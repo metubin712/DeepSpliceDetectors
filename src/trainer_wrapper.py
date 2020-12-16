@@ -64,3 +64,6 @@ class TrainerWrapper:
                 self._is_summary_shown = True
             self._fit(epochs)
             tf.keras.backend.clear_session()
+
+    def get_network_name(self):
+        return self._network_name
