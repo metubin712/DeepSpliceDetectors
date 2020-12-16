@@ -1,5 +1,7 @@
 from src.experiments import *
 import tensorflow as tf
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 if __name__ == '__main__':
     execute_on_gpu = True
