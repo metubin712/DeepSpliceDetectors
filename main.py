@@ -28,4 +28,4 @@ if __name__ == '__main__':
             model = experiment()
             network_name = model.get_network_name()
             print(f'Running {network_name}.')
-            model.fit(experiments=2, epochs=10)
+            model.fit(experiments=10, epochs=1000 if model.is_extended else 300)
