@@ -33,3 +33,13 @@ $ tensorboard --logdir logs/
 
 2. Use our *Jupyter Notebook* and recreate the graphs used in the article.
 
+# Citation
+
+Please use the following bibtex to cite the article or this repository:
+```text
+TODO: Complete the citation
+```
+
+# Contact
+
+For any inquiries about the code in the repository or the article, contact us using [zabardast.amin@metu.edu.tr](mailto:zabardast.amin@metu.edu.tr) or [a.yilmaz@maastrichtuniversity.nl](mailto:a.yilmaz@maastrichtuniversity.nl)
