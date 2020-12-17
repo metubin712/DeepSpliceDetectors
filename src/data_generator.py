@@ -2,7 +2,6 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from os.path import expanduser
-from pprint import pprint
 from tensorflow.keras.utils import Sequence
 import math
 
@@ -177,6 +176,7 @@ class DataGenerator:
             self._downsample()
         x, y = self._combine_training()
         return TrainingSequence(x, y, batch_size)
+
 
 if __name__ == "__main__":
     # Creating Data Generator

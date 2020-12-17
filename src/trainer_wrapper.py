@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.losses import categorical_crossentropy
 from tensorflow.keras.callbacks import TensorBoard
-from data_generator import DataGenerator
+from src.data_generator import DataGenerator
 
 
 class TrainerWrapper:
