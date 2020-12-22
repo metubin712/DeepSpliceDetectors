@@ -46,9 +46,9 @@ $ tensorboard --logdir logs/
 
 2. Using our [Jupyter Notebook](https://jupyter.org/) to recreate the graphs used in the article.
 
-## Accessing Log Files
+## Accessing Our Experiment Log Files
 
-For those who are interested in examining the log files and cannot retrain the networks, th following command will download our log files and place them in `logs/` directory in project's root.
+For those who are interested in examining the log files and cannot retrain the networks, the following command will download our log files and place them in `logs/` directory in project's root.
 ```shell
 $ sh download_our_logs.sh
 ```
