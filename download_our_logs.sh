@@ -1,5 +1,13 @@
 #!/bin/bash
 
+while true; do
+    read -p "Warning! This code might override the data in logs directory. Continue? (y/N)? " yn
+    case $yn in
+        [Yy]* ) break;;
+        * ) echo "Aborted!."; exit;;
+    esac
+done
+
 directory=~/.DeepSpliceDetectors
 mkdir -p "$directory"
 
@@ -9,3 +17,4 @@ if ! [ -f $output ]; then
 fi
 
 tar -xf $output -C ./
+echo "Done!"

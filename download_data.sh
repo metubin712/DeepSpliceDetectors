@@ -9,3 +9,4 @@ if ! [ -f $output ]; then
 fi
 
 tar -xf $output -C $directory
+echo "Data is downloaded and extracted!"
