@@ -9,4 +9,3 @@ if ! [ -f $output ]; then
 fi
 
 tar -xf $output -C $directory
-
