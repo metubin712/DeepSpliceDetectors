@@ -13,13 +13,13 @@ project=$(pwd);
 directory=~/.DeepSpliceDetectors
 mkdir -p "$directory"
 
-md5="$directory/logs.md5"
-cp ./logs.md5 "$directory/logs.md5"
+sha="$directory/logs.sha256"
+cp ./logs.sha256 "$directory"
 
 cd "$directory" || exit
 
 output="$directory/logs.tar.gz"
-if ! md5sum --quiet --status -c "$md5"; then
+if ! shasum --quiet --status -a 256 -c "$sha"; then
   curl -sL -o $output "https://drive.google.com/uc?export=download&id=1aPcXoVQEezFP_SsvEkX9XiDxhPXI5vmO"
 fi
 
