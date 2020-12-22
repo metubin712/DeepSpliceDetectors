@@ -314,3 +314,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,python,windows,jetbrains+all,jupyternotebooks
 
+###### Custom ones
+logs/
