@@ -37,12 +37,12 @@ A variety of Python interpreters are tested for code compatibility (from 3.6.0 t
 
 After a complete execution of the experiments, you can investigate the resulting statistics such as accuracy, computation time, etc. by either:
 
-1. View the log files using *Tensorboard*
+1. View the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
 ```shell
 $ tensorboard --logdir logs/
 ```
 
-2. Use our *Jupyter Notebook* and recreate the graphs used in the article.
+2. Use our [Jupyter Notebook](https://jupyter.org/) and recreate the graphs used in the article.
 
 ## Accessing Log Files
 
