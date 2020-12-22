@@ -37,14 +37,14 @@ The experiments will automatically use the available GPU on the system (given th
 
 ## The Result
 
-After a complete execution of the experiments, you can investigate the resulting statistics such as accuracy, computation time, etc. by either:
+After a complete execution of the experiments, you can investigate the resulting statistics such as accuracy, computation time, etc. by:
 
-1. View the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
+1. Viewing the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
 ```shell
 $ tensorboard --logdir logs/
 ```
 
-2. Use our [Jupyter Notebook](https://jupyter.org/) and recreate the graphs used in the article.
+2. Using our [Jupyter Notebook](https://jupyter.org/) to recreate the graphs used in the article.
 
 ## Accessing Log Files
 
