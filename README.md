@@ -6,8 +6,9 @@ This repository contains the code for reproducing the experiments in the article
 
 To reproduce the experiments:
 
-1. Install the requirements:
+1. Make sure the `pip` is up-to-date, and install the requirements:
 ```shell
+$ pip install --upgrade pip
 $ pip install -r requirements.txt
 ```
 
@@ -27,11 +28,34 @@ $ python main.py
 
 The experiments will automatically use the available GPU on the system (given that the proper libraries and driver is installed). If you would like to disable the use of GPU, change the `EXECUTE_ON_GPU` variable in the *main* file to `False`.
 
+## Reproducing the Experiments (Docker Version)
+
+Build the image.
+
+```shell
+$ docker build -t deep-splice-detectors .
+```
+
+Create a persistent container from the image with name `DeepSpliceDetectors` and start training.
+
+```shell
+$ docker run -it -d --name DeepSpliceDetectors -p 6006:6006 --gpus all deep-splice-detectors python main.py
+```
+
+To stop and start the training process, use the following.
+
+```shell
+$ docker stop DeepSpliceDetectors
+$ docker Start DeepSpliceDetectors
+```
+
+**Note:** To use *GPU* resources within the docker container make sure that the [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) is installed. Without a proper setup, the code will only execute on *CPU*.
+
 ## Compatibility and Requirements
 
 - All provided code (including shell scripts to download the data and log files) are tested in **GNU/Linux** and **macOS** operating systems. Complete **Windows** support may not be 100%.
 
-- A variety of Python interpreters are tested for code compatibility (from 3.6.0 to 3.8.6). Python 2.x is not supported.
+- We recommand using python 3.8+ for the experiments. Python 2.x is not supported.
 
 - Python package requirements are available at `requirements.txt` file.
 
@@ -42,6 +66,12 @@ After a complete execution of the experiments, you can investigate the resulting
 1. Viewing the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
 ```shell
 $ tensorboard --logdir logs/
+```
+
+Docker Example:
+
+```shell
+$ docker exec -it DeepSpliceDetectors tensorboard --logdir logs --host=0.0.0.0
 ```
 
 2. Using our [Jupyter Notebook](https://jupyter.org/) to recreate the graphs used in the article.
