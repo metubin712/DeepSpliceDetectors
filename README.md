@@ -71,7 +71,7 @@ $ tensorboard --logdir logs/
 Docker Example:
 
 ```shell
-$ docker exec -it -p 6006:6006 DeepSpliceDetectors tensorboard --logdir logs
+$ docker exec -it DeepSpliceDetectors -p 6006:6006 tensorboard --logdir logs
 ```
 
 2. Using our [Jupyter Notebook](https://jupyter.org/) to recreate the graphs used in the article.
