@@ -39,7 +39,7 @@ $ docker build -t deep-splice-detectors .
 Create a persistent container from the image with name `DeepSpliceDetectors` and start training.
 
 ```shell
-$ docker run -it -d --name DeepSpliceDetecors --gpus all deep-splice-detectors python main.py
+$ docker run -it -d --name DeepSpliceDetectors -p 6006:6006 --gpus all deep-splice-detectors python main.py
 ```
 
 To stop and start the training process, use the following.
@@ -71,7 +71,7 @@ $ tensorboard --logdir logs/
 Docker Example:
 
 ```shell
-$ docker exec -it DeepSpliceDetectors -p 6006:6006 tensorboard --logdir logs
+$ docker exec -it DeepSpliceDetectors tensorboard --logdir logs --host=0.0.0.0
 ```
 
 2. Using our [Jupyter Notebook](https://jupyter.org/) to recreate the graphs used in the article.
