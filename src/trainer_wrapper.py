@@ -3,6 +3,7 @@ from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.losses import categorical_crossentropy
 from tensorflow.keras.callbacks import TensorBoard
 from src.data_generator import DataGenerator
+from src.metrics import f1, precision, recall
 
 
 class TrainerWrapper:
@@ -30,7 +31,7 @@ class TrainerWrapper:
         self._model.compile(
             loss=categorical_crossentropy, 
             optimizer=SGD(learning_rate=0.01), 
-            metrics=['accuracy']
+            metrics=['accuracy', precision, recall, f1]
         )
     
     def _fit(self, epochs):
