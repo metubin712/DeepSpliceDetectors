@@ -76,7 +76,7 @@ class DataGenerator:
             }
     
     def _combine_falses(self):
-        # This remains
+        # TODO: This remains
         falses = [category for category in self._data if category.endswith('false')]
         false_X_data = [self._data[item]['X'] for item in falses]
         false_y_data = [self._data[item]['y'] for item in falses]
