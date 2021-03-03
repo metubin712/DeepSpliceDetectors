@@ -36,7 +36,7 @@ Build the image.
 $ docker build -t deep-splice-detectors .
 ```
 
-Create a persistent container from the image with name `DeepSpliceDetectors`.
+Create a persistent container from the image with name `DeepSpliceDetectors` and start training.
 
 ```shell
 $ docker run -it -d --name DeepSpliceDetecors --gpus all deep-splice-detectors python main.py
