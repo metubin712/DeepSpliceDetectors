@@ -6,8 +6,9 @@ This repository contains the code for reproducing the experiments in the article
 
 To reproduce the experiments:
 
-1. Install the requirements:
+1. Make sure the `pip` is up-to-date, and install the requirements:
 ```shell
+$ pip install --upgrade pip
 $ pip install -r requirements.txt
 ```
 
@@ -31,7 +32,7 @@ The experiments will automatically use the available GPU on the system (given th
 
 - All provided code (including shell scripts to download the data and log files) are tested in **GNU/Linux** and **macOS** operating systems. Complete **Windows** support may not be 100%.
 
-- A variety of Python interpreters are tested for code compatibility (from 3.6.0 to 3.8.6). Python 2.x is not supported.
+- We recommand using python 3.8+ for the experiments. Python 2.x is not supported.
 
 - Python package requirements are available at `requirements.txt` file.
 
