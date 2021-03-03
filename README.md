@@ -28,6 +28,29 @@ $ python main.py
 
 The experiments will automatically use the available GPU on the system (given that the proper libraries and driver is installed). If you would like to disable the use of GPU, change the `EXECUTE_ON_GPU` variable in the *main* file to `False`.
 
+## Reproducing the Experiments (Docker Version)
+
+Build the image.
+
+```shell
+$ docker build -t deep-splice-detectors .
+```
+
+Create a persistent container from the image with name `DeepSpliceDetecors`.
+
+```shell
+$ docker run -it -d --name DeepSpliceDetecors --gpus all deep-splice-detectors python main.py
+```
+
+To stop and start the training process, use the following.
+
+```shell
+$ docker stop DeepSpliceDetectors
+$ docker Start DeepSpliceDetectors
+```
+
+**Note:** to use *GPU* resources within the docker caontainer make sure that the [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) is installed. Without a proper setup, the code will only execute on *CPU*.
+
 ## Compatibility and Requirements
 
 - All provided code (including shell scripts to download the data and log files) are tested in **GNU/Linux** and **macOS** operating systems. Complete **Windows** support may not be 100%.
@@ -43,6 +66,12 @@ After a complete execution of the experiments, you can investigate the resulting
 1. Viewing the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
 ```shell
 $ tensorboard --logdir logs/
+```
+
+Docker Example:
+
+```shell
+$ docker exec -it -p 6006:6006 DeepSpliceDetectors tensorboard --logdir logs
 ```
 
 2. Using our [Jupyter Notebook](https://jupyter.org/) to recreate the graphs used in the article.
