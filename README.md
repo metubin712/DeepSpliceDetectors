@@ -49,7 +49,7 @@ $ docker stop DeepSpliceDetectors
 $ docker Start DeepSpliceDetectors
 ```
 
-**Note:** to use *GPU* resources within the docker container make sure that the [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) is installed. Without a proper setup, the code will only execute on *CPU*.
+**Note:** To use *GPU* resources within the docker container make sure that the [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) is installed. Without a proper setup, the code will only execute on *CPU*.
 
 ## Compatibility and Requirements
 
