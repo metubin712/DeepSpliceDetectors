@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.2.0-gpu
+FROM tensorflow/tensorflow:2.3.0-gpu
 COPY ./ deep-splice-detectors
 WORKDIR /deep-splice-detectors
 RUN ./download_data.sh
