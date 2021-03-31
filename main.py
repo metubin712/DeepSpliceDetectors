@@ -12,10 +12,10 @@ def epochs(network): return 1000 if network.endswith('extended') else 300
 
 if __name__ == '__main__':
     experiments = [
-        CnnLevel1, 
-        CnnLevel2, 
-        CnnLevel3, 
-        CnnLevel4, 
+        CnnLevel1,
+        CnnLevel2,
+        CnnLevel3,
+        CnnLevel4,
         CnnLevel5,
         BlstmLevel1,
         BlstmLevel1Extended,
