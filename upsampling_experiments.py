@@ -6,27 +6,14 @@ EXPERIMENTS = 10  # Run 10 experiments per each Level of each Group
 EXECUTE_ON_GPU = True
 
 
-# Running each experiment for 300 epochs (normally) and 1000 epochs (extended versions)
-def epochs(network): return 1000 if network.endswith('extended') else 300
-
-
 if __name__ == '__main__':
     experiments = [
-        CnnLevel1,
-        CnnLevel2,
-        CnnLevel3,
-        CnnLevel4,
         CnnLevel5,
-        BlstmLevel1,
-        BlstmLevel1Extended,
-        BlstmLevel2,
-        BlstmLevel2Extended,
-        BlstmLevel3,
-        BlstmLevel3Extended,
-        BlstmLevel4,
-        BlstmLevel4Extended,
-        BlstmLevel5,
-        BlstmLevel5Extended
+        CnnLevel5Up5,
+        CnnLevel5Up10,
+        CnnLevel5Up15,
+        CnnLevel5Up20,
+        CnnLevel5Up25
     ]
 
     for experiment in experiments:
@@ -34,4 +21,4 @@ if __name__ == '__main__':
             model = experiment()
             network_name = model.get_network_name()
             print(f'Running {network_name}.')
-            model.fit(experiments=EXPERIMENTS, epochs=epochs(network_name))
+            model.fit(experiments=EXPERIMENTS, epochs=300)

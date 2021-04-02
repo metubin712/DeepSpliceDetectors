@@ -22,6 +22,13 @@ class CnnLevel1(TrainerWrapper):
         self._model = Model(inputs=inputs, outputs=outputs)
 
 
+class CnnLevel1Up(CnnLevel1):
+    def __init__(self):
+        super(CnnLevel1Up, self).__init__()
+        self._network_name = 'cnn_level_1_up_5'
+        self._upsampling = 5
+
+
 class CnnLevel2(TrainerWrapper):
     def __init__(self):
         super(CnnLevel2, self).__init__(name='cnn_level_2')
@@ -104,6 +111,41 @@ class CnnLevel5(TrainerWrapper):
         self._model = Model(inputs=inputs, outputs=outputs)
 
 
+class CnnLevel5Up5(CnnLevel1):
+    def __init__(self):
+        super(CnnLevel5Up5, self).__init__()
+        self._network_name = 'cnn_level_5_up_5'
+        self._upsampling = 5
+
+
+class CnnLevel5Up10(CnnLevel1):
+    def __init__(self):
+        super(CnnLevel5Up10, self).__init__()
+        self._network_name = 'cnn_level_5_up_10'
+        self._upsampling = 10
+
+
+class CnnLevel5Up15(CnnLevel1):
+    def __init__(self):
+        super(CnnLevel5Up15, self).__init__()
+        self._network_name = 'cnn_level_5_up_15'
+        self._upsampling = 15
+
+
+class CnnLevel5Up20(CnnLevel1):
+    def __init__(self):
+        super(CnnLevel5Up20, self).__init__()
+        self._network_name = 'cnn_level_5_up_20'
+        self._upsampling = 20
+
+
+class CnnLevel5Up25(CnnLevel1):
+    def __init__(self):
+        super(CnnLevel5Up25, self).__init__()
+        self._network_name = 'cnn_level_5_up_25'
+        self._upsampling = 25
+
+
 class BlstmLevel1(TrainerWrapper):
     def __init__(self):
         super(BlstmLevel1, self).__init__(name='blstm_level_1')
@@ -156,6 +198,7 @@ class BlstmLevel2(TrainerWrapper):
         classifier = Dense(units=5, activation='relu')(flatten)
         outputs = Dense(units=3, activation='softmax')(classifier)
         self._model = Model(inputs=inputs, outputs=outputs)
+
 
 class BlstmLevel3(TrainerWrapper):
     def __init__(self):

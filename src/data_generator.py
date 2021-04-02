@@ -27,7 +27,7 @@ class DataGenerator:
     
     _data_location = f'{HOME}/.DeepSpliceDetectors'
     
-    # Fixed Properies
+    # Fixed Properties
     _data_files = [
         'EI_true',
         'IE_true',
@@ -36,14 +36,14 @@ class DataGenerator:
     ]
     _EI_true_length = 2796
     _IE_true_length = 2880
-    #_average_class_length = (_EI_true_length+_IE_true_length)//2
     _false_length = 271926+329359
     _minority_class_length = min(_EI_true_length, _IE_true_length)
     
-    def __init__(self, seed=0, upsampling=1, validation_split=0.2):
+    def __init__(self, seed=0, upsampling_minority=1, balancing=True, validation_split=0.2):
         # Seed value for reproducibility of random processes
         self._seed = seed
-        self._upsampling = upsampling
+        self._upsampling = upsampling_minority
+        self._balancing = balancing
         np.random.rand(seed)
         # Validation split's default value
         self._validation_split = validation_split
@@ -76,7 +76,6 @@ class DataGenerator:
             }
     
     def _combine_falses(self):
-        # TODO: This remains
         falses = [category for category in self._data if category.endswith('false')]
         false_X_data = [self._data[item]['X'] for item in falses]
         false_y_data = [self._data[item]['y'] for item in falses]
@@ -91,12 +90,12 @@ class DataGenerator:
         """
         Prepare the test and validation split.
         """
-        valdiation_size = (int)(self._validation_split*self._minority_class_length)
+        validation_size = (int)(self._validation_split*self._minority_class_length)
         for category in self._data.keys():
             X_train, X_val, y_train, y_val = train_test_split(
                 self._data[category]['X'], 
                 self._data[category]['y'], 
-                test_size=valdiation_size, 
+                test_size=validation_size,
                 random_state=self._seed
             )
             self._training_org['X'][category] = X_train
@@ -160,9 +159,6 @@ class DataGenerator:
         return a[p], b[p]
     
     def _combine_training(self):
-        """
-        TODO: Combine , suffle and return train data
-        """
         X = np.concatenate([self._training['X'][category] for category in self._training['X']], axis=0)
         y = np.concatenate([self._training['y'][category] for category in self._training['y']], axis=0)
         return self._unison_shuffled_copies(X, y)
@@ -173,6 +169,9 @@ class DataGenerator:
     def get_training_generator(self, batch_size):
         if self._upsampling > 1:
             self._upsample()
+        else:
+            self._training = self._training_org
+        if self._balancing:
             self._downsample()
         x, y = self._combine_training()
         return TrainingSequence(x, y, batch_size)
@@ -180,7 +179,7 @@ class DataGenerator:
 
 if __name__ == "__main__":
     # Creating Data Generator
-    data_generator = DataGenerator(seed=0, upsampling=2, validation_split=0.2)
+    data_generator = DataGenerator(seed=0, upsampling_minority=10, balancing=True, validation_split=0.2)
 
     # Validation Data
     val_X, val_y = data_generator.get_validation_data()
@@ -189,8 +188,9 @@ if __name__ == "__main__":
 
     # Training Data
     batch_size = 100
-    print(f'Generating Traning Data. Batch Size: {batch_size}')
+    print(f'Generating Training Data. Batch Size: {batch_size}')
     gen = data_generator.get_training_generator(batch_size)
+    print(f'Number of Batches: {len(gen)}')
     x, y = gen[0]  # Example Batch
     print(f'Shape of Training Batch: {x.shape}')
     print(f'Shape of Training Batch Labels: {y.shape}')
