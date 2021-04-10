@@ -20,9 +20,9 @@ cd "$directory" || exit
 
 logs="$directory/logs.tar.gz"
 if ! shasum --quiet --status -a 256 -c "$sha"; then
-  curl -sL -o "$logs.aa" "https://drive.google.com/uc?export=download&id=1aKYip4pDWI9S0hIhKwhgCLmDqZ-wpZBf"
-  curl -sL -o "$logs.ab" "https://drive.google.com/uc?export=download&id=1SX0tU6g_YaiUSr2Vg-mpZPKYlUKVDAoW"
-  curl -sL -o "$logs.ac" "https://drive.google.com/uc?export=download&id=1_EvwAzF5A5LBH3bY1CIAhQb_UCXqbf6H"
+  curl -sL -o "$logs.aa" "https://drive.google.com/uc?export=download&id=1kU01Y3ckixYvTHY_1rCXNoPLjWlCRdCN"
+  curl -sL -o "$logs.ab" "https://drive.google.com/uc?export=download&id=10rcIiU120X85XJxfM16vEYguQYTAIxFH"
+  curl -sL -o "$logs.ac" "https://drive.google.com/uc?export=download&id=1-lFz1Z3x_fQFtMcJf7yQn9qBWx2kqxra"
 fi
 
 cd "$project" || exit
