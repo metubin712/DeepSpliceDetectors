@@ -2,7 +2,6 @@ from src.experiments import *
 import tensorflow as tf
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Disabling CPP output information. Comment to see the outputs.
-EXPERIMENTS = 10  # Run 10 experiments per each Level of each Group
 EXECUTE_ON_GPU = True
 
 
@@ -34,4 +33,4 @@ if __name__ == '__main__':
             model = experiment()
             network_name = model.get_network_name()
             print(f'Running {network_name}.')
-            model.fit(experiments=EXPERIMENTS, epochs=epochs(network_name))
+            model.fit(epochs=epochs(network_name))
