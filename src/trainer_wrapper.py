@@ -57,7 +57,7 @@ class TrainerWrapper:
             epochs=epochs,
             shuffle=True,
             validation_data=(val_x, val_y),
-            verbose=True,
+            verbose=False,
             callbacks=[
                 TensorBoard(
                     log_dir=f'logs/{self._name}',
