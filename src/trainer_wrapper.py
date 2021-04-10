@@ -2,30 +2,28 @@ import tensorflow as tf
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.losses import categorical_crossentropy
 from tensorflow.keras.callbacks import TensorBoard
-from src.data_generator import DataGenerator
+from src.data_generator import KFoldDataGenerator
 from tensorflow.keras.metrics import AUC, Precision, Recall
 from tensorflow_addons.metrics import F1Score
 
 
 class TrainerWrapper:
-    def __init__(self, name, upsampling=1):
+    def __init__(self, name):
         """
         Initializing Some Defaults and taking in variables
         """
         self._model = None
         self._is_summary_shown = False
         self._network_name = name
-        self._upsampling = upsampling
+        self._data_generator = None
+        self._batch_size = 200
 
-    def _load_data(self, seed):
-        data_generator = DataGenerator(
+    def _load_data(self, seed=0):
+        data = KFoldDataGenerator(
             seed=seed,
-            upsampling_minority=self._upsampling,
-            balancing=True,
-            validation_split=0.2
+            folds=10
         )
-        self._validation_X, self._validation_y = data_generator.get_validation_data()
-        self._training_generator = data_generator.get_training_generator(100 if self._upsampling == 1 else 500)
+        self._data_generator = data.data_generator()
 
     def _create_network(self):
         """
@@ -48,16 +46,18 @@ class TrainerWrapper:
             ]
         )
 
-    def _fit(self, epochs):
+    def _fit(self, train_x, train_y, val_x, val_y, epochs):
         """
         Calling the fit function
         """
         self._model.fit(
-            self._training_generator,
+            x=train_x,
+            y=train_y,
+            batch_size=self._batch_size,
             epochs=epochs,
             shuffle=True,
-            validation_data=(self._validation_X, self._validation_y),
-            verbose=False,
+            validation_data=(val_x, val_y),
+            verbose=True,
             callbacks=[
                 TensorBoard(
                     log_dir=f'logs/{self._name}',
@@ -68,16 +68,22 @@ class TrainerWrapper:
             ]
         )
 
-    def fit(self, experiments=5, epochs=10):
-        for seed in range(experiments):
-            self._name = f'{self._network_name}/e{seed}/'
-            self._load_data(seed=seed)
+    def fit(self, epochs=10):
+        self._load_data()
+        for fold, (train_x, train_y, val_x, val_y) in enumerate(self._data_generator):
+            self._name = f'{self._network_name}/e{fold}/'
             self._create_network()
             self._compile_model()
             if not self._is_summary_shown:
                 self._model.summary()
                 self._is_summary_shown = True
-            self._fit(epochs)
+            self._fit(
+                train_x=train_x,
+                train_y=train_y,
+                val_x=val_x,
+                val_y=val_y,
+                epochs=epochs
+            )
             tf.keras.backend.clear_session()
 
     def get_network_name(self):
