@@ -78,7 +78,7 @@ class TrainerWrapper:
         )
 
     def fit(self, epochs=10):
-        self._load_data(seed=1990)
+        self._load_data()
         for fold, (train_x, train_y, val_x, val_y) in enumerate(self._data_generator):
             self._name = f'{self._network_name}/e{fold}/'
             self._create_network()
