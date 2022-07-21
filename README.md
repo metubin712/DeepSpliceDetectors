@@ -68,7 +68,7 @@ After a complete execution of the experiments, you can investigate the resulting
 
 1. Viewing the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
 ```shell
-$ tensorboard --logdir logs/
+$ tensorboard --logdir logs --host=0.0.0.0
 ```
 
 Docker Example:
