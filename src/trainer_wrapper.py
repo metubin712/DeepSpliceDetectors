@@ -17,7 +17,7 @@ class TrainerWrapper:
         self._is_summary_shown = False
         self._network_name = name
         self._data_generator = None
-        self._batch_size = 2000
+        self._batch_size = 200
         self._model_file_location = f'models/{self._network_name}.hdf5'
 
     def _load_data(self, seed=0):
