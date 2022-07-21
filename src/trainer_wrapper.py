@@ -73,7 +73,7 @@ class TrainerWrapper:
                     monitor='val_auc_pr',
                     save_freq='epoch',
                     mode='max'
-                    )
+                )
             ]
         )
 
