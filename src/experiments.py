@@ -1,5 +1,5 @@
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Conv1D, Dense, Input, MaxPool1D, Flatten, LSTM, Concatenate
+from tensorflow.keras.layers import Conv1D, Dense, Input, MaxPool1D, Flatten, LSTM, Concatenate, GRU
 from tensorflow.keras.backend import reverse
 from src.trainer_wrapper import TrainerWrapper
 
@@ -355,3 +355,98 @@ class BlstmLevel5Extended(BlstmLevel5):
     def __init__(self):
         super(BlstmLevel5Extended, self).__init__()
         self._network_name = 'blstm_level_5_extended'
+
+
+class BgruLevel5Extended(TrainerWrapper):
+    def __init__(self):
+        super(BgruLevel5Extended, self).__init__(name='bgru_level_5_extended')
+        self.is_extended = True
+
+    def _create_network(self):
+        """
+        Group: BGRU Extended
+        Level: 5
+        """
+        inputs = Input(shape=(140, 4))
+
+        gru = GRU(2, return_sequences=True)(inputs)
+        rev_inputs = reverse(inputs, axes=1)
+        rev_gru = GRU(2, return_sequences=True)(rev_inputs)
+
+        bgru = Concatenate(axis=-1)([gru, rev_gru])
+
+        gru = GRU(2, return_sequences=True)(bgru)
+        rev_inputs = reverse(gru, axes=1)
+        rev_gru = GRU(2, return_sequences=True)(rev_inputs)
+
+        bgru = Concatenate(axis=-1)([gru, rev_gru])
+
+        gru = GRU(2, return_sequences=True)(bgru)
+        rev_inputs = reverse(bgru, axes=1)
+        rev_gru = GRU(2, return_sequences=True)(rev_inputs)
+
+        bgru = Concatenate(axis=-1)([gru, rev_gru])
+
+        gru = GRU(2, return_sequences=True)(bgru)
+        rev_inputs = reverse(bgru, axes=1)
+        rev_gru = GRU(2, return_sequences=True)(rev_inputs)
+
+        bgru = Concatenate(axis=-1)([gru, rev_gru])
+
+        gru = GRU(2, return_sequences=True)(bgru)
+        rev_inputs = reverse(bgru, axes=1)
+        rev_gru = GRU(2, return_sequences=True)(rev_inputs)
+
+        bgru = Concatenate(axis=-1)([gru, rev_gru])
+
+        max_pooled = MaxPool1D(pool_size=7)(bgru)
+        flatten = Flatten()(max_pooled)
+        classifier = Dense(units=5, activation='relu')(flatten)
+        outputs = Dense(units=3, activation='softmax')(classifier)
+        self._model = Model(inputs=inputs, outputs=outputs)
+
+
+class LstmLevel5Extended(TrainerWrapper):
+    def __init__(self):
+        super(LstmLevel5Extended, self).__init__(name='lstm_level_5_extended')
+        self.is_extended = True
+
+    def _create_network(self):
+        """
+        Group: LSTM Extended
+        Level: 1
+        """
+        inputs = Input(shape=(140, 4))
+        lstm = LSTM(2, return_sequences=True)(inputs)
+        lstm = LSTM(2, return_sequences=True)(lstm)
+        lstm = LSTM(2, return_sequences=True)(lstm)
+        lstm = LSTM(2, return_sequences=True)(lstm)
+        lstm = LSTM(2, return_sequences=True)(lstm)
+        max_pooled = MaxPool1D(pool_size=7)(lstm)
+        flatten = Flatten()(max_pooled)
+        classifier = Dense(units=5, activation='relu')(flatten)
+        outputs = Dense(units=3, activation='softmax')(classifier)
+        self._model = Model(inputs=inputs, outputs=outputs)
+
+
+class GruLevel5Extended(TrainerWrapper):
+    def __init__(self):
+        super(GruLevel5Extended, self).__init__(name='gru_level_5_extended')
+        self.is_extended = True
+
+    def _create_network(self):
+        """
+        Group: GRU Extended
+        Level: 2
+        """
+        inputs = Input(shape=(140, 4))
+        gru = GRU(2, return_sequences=True)(inputs)
+        gru = GRU(2, return_sequences=True)(gru)
+        gru = GRU(2, return_sequences=True)(gru)
+        gru = GRU(2, return_sequences=True)(gru)
+        gru = GRU(2, return_sequences=True)(gru)
+        max_pooled = MaxPool1D(pool_size=7)(gru)
+        flatten = Flatten()(max_pooled)
+        classifier = Dense(units=5, activation='relu')(flatten)
+        outputs = Dense(units=3, activation='softmax')(classifier)
+        self._model = Model(inputs=inputs, outputs=outputs)
