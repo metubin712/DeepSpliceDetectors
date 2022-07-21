@@ -45,8 +45,11 @@ $ docker run -it -d --name DeepSpliceDetectors -p 6006:6006 --gpus all deep-spli
 To stop and start the training process, use the following.
 
 ```shell
+$ docker start DeepSpliceDetectors
+```
+
+```shell
 $ docker stop DeepSpliceDetectors
-$ docker Start DeepSpliceDetectors
 ```
 
 **Note:** To use *GPU* resources within the docker container make sure that the [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) is installed. Without a proper setup, the code will only execute on *CPU*.
