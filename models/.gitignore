@@ -1,0 +1,2 @@
+# Ignore Trained Models
+*.hdf5

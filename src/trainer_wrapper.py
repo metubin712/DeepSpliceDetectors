@@ -1,10 +1,11 @@
 import tensorflow as tf
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.losses import categorical_crossentropy
-from tensorflow.keras.callbacks import TensorBoard
+from tensorflow.keras.callbacks import TensorBoard, ModelCheckpoint
 from src.data_generator import KFoldDataGenerator
 from tensorflow.keras.metrics import AUC, Precision, Recall
 from tensorflow_addons.metrics import F1Score
+from tensorflow.keras.models import load_model
 
 
 class TrainerWrapper:
@@ -16,7 +17,8 @@ class TrainerWrapper:
         self._is_summary_shown = False
         self._network_name = name
         self._data_generator = None
-        self._batch_size = 200
+        self._batch_size = 2000
+        self._model_file_location = f'models/{self._network_name}.hdf5'
 
     def _load_data(self, seed=0):
         data = KFoldDataGenerator(
@@ -64,12 +66,19 @@ class TrainerWrapper:
                     write_graph=False,
                     write_images=False,
                     update_freq="epoch"
-                )
+                ),
+                ModelCheckpoint(
+                    self._model_file_location,
+                    save_best_only=True,
+                    monitor='val_auc_pr',
+                    save_freq='epoch',
+                    mode='max'
+                    )
             ]
         )
 
     def fit(self, epochs=10):
-        self._load_data()
+        self._load_data(seed=1990)
         for fold, (train_x, train_y, val_x, val_y) in enumerate(self._data_generator):
             self._name = f'{self._network_name}/e{fold}/'
             self._create_network()
@@ -88,3 +97,18 @@ class TrainerWrapper:
 
     def get_network_name(self):
         return self._network_name
+
+    def load_from_disk(self):
+        try:
+            self._model = load_model(self._model_file_location)
+        except OSError:
+            print('Model Does Not Exist!')
+
+    def evaluate(self, x, y):
+        return self._model.evaluate(
+            x,
+            y,
+            batch_size=self._batch_size,
+            verbose=False,
+            return_dict=True
+        )
