@@ -1,12 +1,17 @@
 from src.experiments import *
 import tensorflow as tf
 import os
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Disabling CPP output information. Comment to see the outputs.
 EXECUTE_ON_GPU = True
 
 
 # Running each experiment for 300 epochs (normally) and 1000 epochs (extended versions)
 def epochs(network): return 1000 if network.endswith('extended') else 300
+
+
+# Choosing the dataset
+is_hs3d = True
 
 
 if __name__ == '__main__':
@@ -30,7 +35,7 @@ if __name__ == '__main__':
 
     for experiment in experiments:
         with tf.device('/gpu:0' if EXECUTE_ON_GPU else '/cpu:0'):
-            model = experiment()
+            model = experiment(dataset='hs3d' if is_hs3d else 'ce')
             network_name = model.get_network_name()
             print(f'Running {network_name}.')
             model.fit(epochs=epochs(network_name))
