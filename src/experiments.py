@@ -5,8 +5,8 @@ from src.trainer_wrapper import TrainerWrapper
 
 
 class CnnLevel1(TrainerWrapper):
-    def __init__(self):
-        super(CnnLevel1, self).__init__(name='cnn_level_1')
+    def __init__(self, dataset):
+        super(CnnLevel1, self).__init__(name='cnn_level_1', dataset=dataset)
 
     def _create_network(self):
         """
@@ -23,15 +23,15 @@ class CnnLevel1(TrainerWrapper):
 
 
 class CnnLevel1Up(CnnLevel1):
-    def __init__(self):
-        super(CnnLevel1Up, self).__init__()
+    def __init__(self, dataset):
+        super(CnnLevel1Up, self).__init__(dataset=dataset)
         self._network_name = 'cnn_level_1_up_5'
         self._upsampling = 5
 
 
 class CnnLevel2(TrainerWrapper):
-    def __init__(self):
-        super(CnnLevel2, self).__init__(name='cnn_level_2')
+    def __init__(self, dataset):
+        super(CnnLevel2, self).__init__(name='cnn_level_2', dataset=dataset)
 
     def _create_network(self):
         """
@@ -49,8 +49,8 @@ class CnnLevel2(TrainerWrapper):
 
 
 class CnnLevel3(TrainerWrapper):
-    def __init__(self):
-        super(CnnLevel3, self).__init__(name='cnn_level_3')
+    def __init__(self, dataset):
+        super(CnnLevel3, self).__init__(name='cnn_level_3', dataset=dataset)
 
     def _create_network(self):
         """
@@ -69,8 +69,8 @@ class CnnLevel3(TrainerWrapper):
 
 
 class CnnLevel4(TrainerWrapper):
-    def __init__(self):
-        super(CnnLevel4, self).__init__(name='cnn_level_4')
+    def __init__(self, dataset):
+        super(CnnLevel4, self).__init__(name='cnn_level_4', dataset=dataset)
 
     def _create_network(self):
         """
@@ -90,8 +90,8 @@ class CnnLevel4(TrainerWrapper):
 
 
 class CnnLevel5(TrainerWrapper):
-    def __init__(self):
-        super(CnnLevel5, self).__init__(name='cnn_level_5')
+    def __init__(self, dataset):
+        super(CnnLevel5, self).__init__(name='cnn_level_5', dataset=dataset)
 
     def _create_network(self):
         """
@@ -112,43 +112,43 @@ class CnnLevel5(TrainerWrapper):
 
 
 class CnnLevel5Up5(CnnLevel1):
-    def __init__(self):
-        super(CnnLevel5Up5, self).__init__()
+    def __init__(self, dataset):
+        super(CnnLevel5Up5, self).__init__(dataset=dataset)
         self._network_name = 'cnn_level_5_up_5'
         self._upsampling = 5
 
 
 class CnnLevel5Up10(CnnLevel1):
-    def __init__(self):
-        super(CnnLevel5Up10, self).__init__()
+    def __init__(self, dataset):
+        super(CnnLevel5Up10, self).__init__(dataset=dataset)
         self._network_name = 'cnn_level_5_up_10'
         self._upsampling = 10
 
 
 class CnnLevel5Up15(CnnLevel1):
-    def __init__(self):
-        super(CnnLevel5Up15, self).__init__()
+    def __init__(self, dataset):
+        super(CnnLevel5Up15, self).__init__(dataset=dataset)
         self._network_name = 'cnn_level_5_up_15'
         self._upsampling = 15
 
 
 class CnnLevel5Up20(CnnLevel1):
-    def __init__(self):
-        super(CnnLevel5Up20, self).__init__()
+    def __init__(self, dataset):
+        super(CnnLevel5Up20, self).__init__(dataset=dataset)
         self._network_name = 'cnn_level_5_up_20'
         self._upsampling = 20
 
 
 class CnnLevel5Up25(CnnLevel1):
-    def __init__(self):
-        super(CnnLevel5Up25, self).__init__()
+    def __init__(self, dataset):
+        super(CnnLevel5Up25, self).__init__(dataset=dataset)
         self._network_name = 'cnn_level_5_up_25'
         self._upsampling = 25
 
 
 class BlstmLevel1(TrainerWrapper):
-    def __init__(self):
-        super(BlstmLevel1, self).__init__(name='blstm_level_1')
+    def __init__(self, dataset):
+        super(BlstmLevel1, self).__init__(name='blstm_level_1', dataset=dataset)
 
     def _create_network(self):
         """
@@ -171,8 +171,8 @@ class BlstmLevel1(TrainerWrapper):
 
 
 class BlstmLevel2(TrainerWrapper):
-    def __init__(self):
-        super(BlstmLevel2, self).__init__(name='blstm_level_2')
+    def __init__(self, dataset):
+        super(BlstmLevel2, self).__init__(name='blstm_level_2', dataset=dataset)
 
     def _create_network(self):
         """
@@ -201,8 +201,8 @@ class BlstmLevel2(TrainerWrapper):
 
 
 class BlstmLevel3(TrainerWrapper):
-    def __init__(self):
-        super(BlstmLevel3, self).__init__(name='blstm_level_3')
+    def __init__(self, dataset):
+        super(BlstmLevel3, self).__init__(name='blstm_level_3', dataset=dataset)
 
     def _create_network(self):
         """
@@ -237,8 +237,8 @@ class BlstmLevel3(TrainerWrapper):
 
 
 class BlstmLevel4(TrainerWrapper):
-    def __init__(self):
-        super(BlstmLevel4, self).__init__(name='blstm_level_4')
+    def __init__(self, dataset):
+        super(BlstmLevel4, self).__init__(name='blstm_level_4', dataset=dataset)
 
     def _create_network(self):
         """
@@ -279,8 +279,8 @@ class BlstmLevel4(TrainerWrapper):
 
 
 class BlstmLevel5(TrainerWrapper):
-    def __init__(self):
-        super(BlstmLevel5, self).__init__(name='blstm_level_5')
+    def __init__(self, dataset):
+        super(BlstmLevel5, self).__init__(name='blstm_level_5', dataset=dataset)
 
     def _create_network(self):
         """
@@ -327,39 +327,39 @@ class BlstmLevel5(TrainerWrapper):
 
 
 class BlstmLevel1Extended(BlstmLevel1):
-    def __init__(self):
-        super(BlstmLevel1Extended, self).__init__()
+    def __init__(self, dataset):
+        super(BlstmLevel1Extended, self).__init__(dataset=dataset)
         self._network_name = 'blstm_level_1_extended'
         self.is_extended = True
 
 
 class BlstmLevel2Extended(BlstmLevel2):
-    def __init__(self):
-        super(BlstmLevel2Extended, self).__init__()
+    def __init__(self, dataset):
+        super(BlstmLevel2Extended, self).__init__(dataset=dataset)
         self._network_name = 'blstm_level_2_extended'
 
 
 class BlstmLevel3Extended(BlstmLevel3):
-    def __init__(self):
-        super(BlstmLevel3Extended, self).__init__()
+    def __init__(self, dataset):
+        super(BlstmLevel3Extended, self).__init__(dataset=dataset)
         self._network_name = 'blstm_level_3_extended'
 
 
 class BlstmLevel4Extended(BlstmLevel4):
-    def __init__(self):
-        super(BlstmLevel4Extended, self).__init__()
+    def __init__(self, dataset):
+        super(BlstmLevel4Extended, self).__init__(dataset=dataset)
         self._network_name = 'blstm_level_4_extended'
 
 
 class BlstmLevel5Extended(BlstmLevel5):
-    def __init__(self):
-        super(BlstmLevel5Extended, self).__init__()
+    def __init__(self, dataset):
+        super(BlstmLevel5Extended, self).__init__(dataset=dataset)
         self._network_name = 'blstm_level_5_extended'
 
 
 class BgruLevel5Extended(TrainerWrapper):
-    def __init__(self):
-        super(BgruLevel5Extended, self).__init__(name='bgru_level_5_extended')
+    def __init__(self, dataset):
+        super(BgruLevel5Extended, self).__init__(name='bgru_level_5_extended', dataset=dataset)
         self.is_extended = True
 
     def _create_network(self):
@@ -407,8 +407,8 @@ class BgruLevel5Extended(TrainerWrapper):
 
 
 class LstmLevel5Extended(TrainerWrapper):
-    def __init__(self):
-        super(LstmLevel5Extended, self).__init__(name='lstm_level_5_extended')
+    def __init__(self, dataset):
+        super(LstmLevel5Extended, self).__init__(name='lstm_level_5_extended', dataset=dataset)
         self.is_extended = True
 
     def _create_network(self):
@@ -430,8 +430,8 @@ class LstmLevel5Extended(TrainerWrapper):
 
 
 class GruLevel5Extended(TrainerWrapper):
-    def __init__(self):
-        super(GruLevel5Extended, self).__init__(name='gru_level_5_extended')
+    def __init__(self, dataset):
+        super(GruLevel5Extended, self).__init__(name='gru_level_5_extended', dataset=dataset)
         self.is_extended = True
 
     def _create_network(self):
