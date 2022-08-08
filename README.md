@@ -68,20 +68,24 @@ After a complete execution of the experiments, you can investigate the resulting
 
 1. Viewing the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
 ```shell
-$ tensorboard --logdir logs --host=0.0.0.0
+$ tensorboard --logdir <path-to-logs> --host=0.0.0.0
 ```
 
 Docker Example:
 
 ```shell
-$ docker exec -it DeepSpliceDetectors tensorboard --logdir logs --host=0.0.0.0
+$ docker exec -it DeepSpliceDetectors tensorboard --logdir <path-to-logs> --host=0.0.0.0
 ```
 
 2. Using our [Jupyter Notebook](https://jupyter.org/) to recreate the graphs used in the article.
 
 ## Accessing Our Experiment Log Files
 
-For those who are interested in examining the log files and cannot retrain the networks, the following command will download our log files and place them in `logs/` directory in project's root.
+For those who are interested in examining the log files and cannot retrain the networks, the following command will download our log files and place them in `logs.hs3d/`, `logs.ce/`, and `logs.nobidir/` directories in project's root.
+- `logs.hs3d/` is for experiments with _HS3D_ dataset.
+- `logs.ce/` is for experiments with _CE_ dataset.
+- `logs.nobidir/` is for experiments with _None-Bidirectional Architectures_.
+
 ```shell
 $ sh download_our_logs.sh
 ```
