@@ -12,12 +12,12 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-2. Download the necessary data:
+1. Download the necessary data:
 ```shell
 sh download_data.sh
 ```
 
-2. Run the main function:
+1. Run the main function:
 ```shell
 python main.py
 ```
@@ -58,7 +58,7 @@ docker stop DeepSpliceDetectors
 
 - All provided code (including shell scripts to download the data and log files) are tested in **GNU/Linux** and **macOS** operating systems. Complete **Windows** support may not be 100%.
 
-- We recommand using python 3.8+ for the experiments. Python 2.x is not supported.
+- We recommend using python 3.8+ for the experiments. Python 2.x is not supported.
 
 - Python package requirements are available at `requirements.txt` file.
 
