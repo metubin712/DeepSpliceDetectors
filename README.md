@@ -8,18 +8,18 @@ To reproduce the experiments:
 
 1. Make sure the `pip` is up-to-date, and install the requirements:
 ```shell
-$ pip install --upgrade pip
-$ pip install -r requirements.txt
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
 2. Download the necessary data:
 ```shell
-$ sh download_data.sh
+sh download_data.sh
 ```
 
 2. Run the main function:
 ```shell
-$ python main.py
+python main.py
 ```
 
 **Important Note:** The complete run of the experiments (training and evaluating **150 neural networks**) can take a very long time. The experiments for the article have been executed on a **Nvidia GeForce 1080 Ti** and took +72 hours.
@@ -33,23 +33,23 @@ The experiments will automatically use the available GPU on the system (given th
 Build the image.
 
 ```shell
-$ docker build -t deep-splice-detectors .
+docker build -t deep-splice-detectors .
 ```
 
 Create a persistent container from the image with name `DeepSpliceDetectors` and start training.
 
 ```shell
-$ docker run -it -d --name DeepSpliceDetectors -p 6006:6006 --gpus all deep-splice-detectors python main.py
+docker run -it -d --name DeepSpliceDetectors -p 6006:6006 --gpus all deep-splice-detectors python main.py
 ```
 
 To stop and start the training process, use the following.
 
 ```shell
-$ docker start DeepSpliceDetectors
+docker start DeepSpliceDetectors
 ```
 
 ```shell
-$ docker stop DeepSpliceDetectors
+docker stop DeepSpliceDetectors
 ```
 
 **Note:** To use *GPU* resources within the docker container make sure that the [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker) is installed. Without a proper setup, the code will only execute on *CPU*.
@@ -68,7 +68,7 @@ After a complete execution of the experiments, you can investigate the resulting
 
 1. Viewing the log files using [Tensorboard](https://www.tensorflow.org/tensorboard)
 ```shell
-$ tensorboard --logdir <path-to-logs> --host=0.0.0.0
+tensorboard --host=0.0.0.0 --logdir <path-to-logs>
 ```
 
 Docker Example:
@@ -87,7 +87,7 @@ For those who are interested in examining the log files and cannot retrain the n
 - `logs.nobidir/` is for experiments with _None-Bidirectional Architectures_.
 
 ```shell
-$ sh download_our_logs.sh
+sh download_our_logs.sh
 ```
 
 # Citation
