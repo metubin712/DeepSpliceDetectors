@@ -1,6 +1,6 @@
 # Deep Splice Detectors
 
-This repository contains the code for reproducing the experiments in the article "**A Comparative Evaluation of Bidirectional LSTM and Convolutional Networks for Prediction of Splice Sites**".
+This repository contains the code for reproducing the experiments in the article "**An Automated Framework for Evaluation of Deep Learning Models for Splice Site Predictions**".
 
 ## Reproducing the Experiments
 
@@ -22,7 +22,7 @@ sh download_data.sh
 python main.py
 ```
 
-**Important Note:** The complete run of the experiments (training and evaluating **150 neural networks**) can take a very long time. The experiments for the article have been executed on a **Nvidia GeForce 1080 Ti** and took +72 hours.
+**Important Note:** The complete run of the experiments (training and evaluating **150 neural networks**) can take a very long time. The experiments for the article have been executed on an **Nvidia GeForce 1080 Ti** and took +72 hours.
 
 ### Using GPU for Computation
 
@@ -58,7 +58,7 @@ docker stop DeepSpliceDetectors
 
 - All provided code (including shell scripts to download the data and log files) are tested in **GNU/Linux** and **macOS** operating systems. Complete **Windows** support may not be 100%.
 
-- We recommend using python 3.8+ for the experiments. Python 2.x is not supported.
+- We recommend using python `3.8.x` for the experiments. Python 2.x is not supported.
 
 - Python package requirements are available at `requirements.txt` file.
 
