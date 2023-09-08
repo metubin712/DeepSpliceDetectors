@@ -1,6 +1,6 @@
 # Deep Splice Detectors
 
-This repository contains the code for reproducing the experiments in the article "**An Automated Framework for Evaluation of Deep Learning Models for Splice Site Predictions**".
+This repository contains the code for reproducing the experiments in the article "**An automated framework for evaluation of deep learning models for splice site predictions**".
 
 ## Reproducing the Experiments
 
