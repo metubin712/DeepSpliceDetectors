@@ -94,7 +94,16 @@ sh download_our_logs.sh
 
 Please use the following bibtex to cite the article or this repository:
 ```text
-TODO: To Be Completed
+@article{zabardast2023automated,
+  title={An automated framework for evaluation of deep learning models for splice site predictions},
+  author={Zabardast, Amin and Tamer, Elif G{\"u}ney and Son, Ye{\c{s}}im Ayd{\i}n and Y{\i}lmaz, Arif},
+  journal={Scientific Reports},
+  volume={13},
+  number={1},
+  pages={10221},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
 ```
 
 # Contact
