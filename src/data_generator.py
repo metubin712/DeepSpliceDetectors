@@ -39,9 +39,10 @@ class DataGenerator:
     _false_length = 271926 + 329359
     _minority_class_length = min(_EI_true_length, _IE_true_length)
     
-    def __init__(self, seed=0, upsampling_minority=1, balancing=True, validation_split=0.2):
+    def __init__(self, seed=0, dataset='hs3d', upsampling_minority=1, balancing=True, validation_split=0.2):
         # Seed value for reproducibility of random processes
         self._seed = seed
+        self._dataset = dataset
         self._upsampling = upsampling_minority
         self._balancing = balancing
         np.random.rand(seed)
@@ -69,7 +70,7 @@ class DataGenerator:
         Loading files into the `self._data` container
         """
         for file_name in self._data_files:
-            file = np.load(f'{self._data_location}/{file_name}.npz')
+            file = np.load(f'{self._data_location}/{self._dataset}/{file_name}.npz')
             self._data[file_name] = {
                 'X': file['X'],
                 'y': file['y']
@@ -187,10 +188,10 @@ class KFoldDataGenerator:
         'EI_false',
         'IE_false'
     ]
-    _EI_true_length = 2796
-    _IE_true_length = 2880
+    _EI_true_length = 0
+    _IE_true_length = 0
     _average_class = (_EI_true_length + _IE_true_length) // 2
-    _false_length = 271926 + 329359
+    _false_length = 0 + 0
     _minority_class_length = min(_EI_true_length, _IE_true_length)
 
     def __init__(self, seed=0, folds=10):
@@ -276,6 +277,23 @@ class KFoldDataGenerator:
         for train_idx, val_idx in self._kf.split(X=self._data['X'], y=self._data['y']):
             yield self._data['X'][train_idx], self._data['y'][train_idx], self._data['X'][val_idx], self._data['y'][
                 val_idx]
+
+
+class HS3DKFoldDataGenerator(KFoldDataGenerator):
+    _data_location = f'{HOME}/.DeepSpliceDetectors/hs3d'
+    _EI_true_length = 2796
+    _IE_true_length = 2880
+    _average_class = (_EI_true_length + _IE_true_length) // 2
+    _false_length = 271926 + 329359
+    _minority_class_length = min(_EI_true_length, _IE_true_length)
+
+class CEKFoldDataGenerator(KFoldDataGenerator):
+    _data_location = f'{HOME}/.DeepSpliceDetectors/ce'
+    _EI_true_length = 6300
+    _IE_true_length = 6300
+    _average_class = (_EI_true_length + _IE_true_length) // 2
+    _false_length = 173700 + 173700
+    _minority_class_length = min(_EI_true_length, _IE_true_length)
 
 
 if __name__ == "__main__":

@@ -330,5 +330,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,python,windows,jetbrains+all,jupyternotebooks,vscode
 
 ###### Custom ones
-logs/
-logs_upsampling/
+logs*/
