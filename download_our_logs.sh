@@ -21,18 +21,18 @@ cd "$directory" || exit
 logs="$directory/logs.tar.gz"
 if ! shasum --quiet --status -a 256 -c "$sha"; then
   # https://drive.google.com/uc?export=download&id=[ID]
-  curl -sL -o "$logs.minamin00" "https://drive.google.com/uc?export=download&id=1Tvyztq6S3mSZtX1lSianjg6md7FUjSzH"
-  curl -sL -o "$logs.minamin01" "https://drive.google.com/uc?export=download&id=1KvIFfnj2-q0_UlAfqMDjhXup8wl7s9M4"
-  curl -sL -o "$logs.minamin02" "https://drive.google.com/uc?export=download&id=13CjR6ERZuf8BLMjeY1POdEDdWSkqfOoZ"
-  curl -sL -o "$logs.minamin03" "https://drive.google.com/uc?export=download&id=1eztQa_oAZAXiV5AQmKBwuKPD8XMLcVJ2"
-  curl -sL -o "$logs.minamin04" "https://drive.google.com/uc?export=download&id=1JbVt2DHMZJwUyxPvkvHaCcgv8VbSuDYy"
-  curl -sL -o "$logs.minamin05" "https://drive.google.com/uc?export=download&id=1Deqssgyk0fQYqC6k3c4PHPjznsmccI-s"
-  curl -sL -o "$logs.minamin06" "https://drive.google.com/uc?export=download&id=1x-USPQbwWiJCmNp-lF4KIwupLF4rZEpO"
-  curl -sL -o "$logs.minamin07" "https://drive.google.com/uc?export=download&id=17eKff_4DdKr1uRusk67G-oZpO-geVQYN"
-  curl -sL -o "$logs.minamin08" "https://drive.google.com/uc?export=download&id=1RhWwowMvgtT6RJqtSl2jIwvraky4d_wJ"
-  curl -sL -o "$logs.minamin09" "https://drive.google.com/uc?export=download&id=1wXHUFD0NKkPZeFm_FUksR-EjWxXsfkU1"
-  curl -sL -o "$logs.minamin10" "https://drive.google.com/uc?export=download&id=1E4LFbK3KI1SbHoev1S-8gG8ddzp1GaFN"
-  curl -sL -o "$logs.minamin11" "https://drive.google.com/uc?export=download&id=1bfL9WbP5WDprw9gwtoPHinn0h88PGNAA"
+  curl -sL -o "$logs.minamin00" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin00"
+  curl -sL -o "$logs.minamin01" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin01"
+  curl -sL -o "$logs.minamin02" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin02"
+  curl -sL -o "$logs.minamin03" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin03"
+  curl -sL -o "$logs.minamin04" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin04"
+  curl -sL -o "$logs.minamin05" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin05"
+  curl -sL -o "$logs.minamin06" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin06"
+  curl -sL -o "$logs.minamin07" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin07"
+  curl -sL -o "$logs.minamin08" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin08"
+  curl -sL -o "$logs.minamin09" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin09"
+  curl -sL -o "$logs.minamin10" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin10"
+  curl -sL -o "$logs.minamin11" "https://cloud.aminzabardast.com/dsd/logs.tar.gz.minamin11"
 fi
 
 cd "$project" || exit
