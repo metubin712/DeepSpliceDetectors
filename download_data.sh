@@ -11,8 +11,8 @@ cd "$directory" || exit
 output="$directory/data.tar.gz"
 if ! shasum --quiet --status -a 256 -c "$sha"; then
   # https://drive.google.com/uc?export=download&id=[ID]
-  curl -sL -o "$directory/data.tar.gz.minamin00" "https://drive.google.com/uc?export=download&id=1ij9Gqi8bXvXsDi66L8Oiah8giEn9rQsJ"
-  curl -sL -o "$directory/data.tar.gz.minamin01" "https://drive.google.com/uc?export=download&id=1850YZY3HIeESY5PsbhDCuf8orG-XW7fV"
+  curl -sL -o "$directory/data.tar.gz.minamin00" "https://cloud.aminzabardast.com/dsd/data.tar.gz.minamin00"
+  curl -sL -o "$directory/data.tar.gz.minamin01" "https://cloud.aminzabardast.com/dsd/data.tar.gz.minamin01"
 fi
 
 cd "$project" || exit
